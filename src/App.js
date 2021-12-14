@@ -3,20 +3,26 @@ import './style.css';
 
 export default function App() {
   const [dsp, setDsp] = useState('');
-  const [itemList, setItemList] = useState([
-    {
-      dsp: "test"
-    }
-  ]);
+  const [itemList, setItemList] = useState([]);
 
   const addItem = (e) => {
     if (e.key === 'Enter') {
-      let arr = [...itemList];
-      arr.push({
-        dsp: dsp,
-      });
-      setItemList(arr);
-      setDsp('');
+      if (dsp !== '') {
+        let arr = [...itemList];
+        let index = arr.findIndex((ele) => ele.dsp === dsp);
+
+        if (index === -1) {
+          arr.push({
+            dsp: dsp,
+          });
+          setItemList(arr);
+          setDsp('');
+        } else {
+          alert('Duplicate item');
+        }
+      } else {
+        alert('No empty item');
+      }
     }
   };
 
@@ -45,9 +51,13 @@ export default function App() {
         {itemList?.map((load, index) => (
           <li key={index} className="item">
             <span>{load.dsp}</span> &emsp;
-            <buttom className="edit-btn" onClick={() => editItem(index, load)}>edit</buttom>
+            <buttom className="edit-btn" onClick={() => editItem(index, load)}>
+              edit
+            </buttom>
             &emsp;
-            <buttom className="delete-btn" onClick={() => deleteItem(index)}>delete</buttom>
+            <buttom className="delete-btn" onClick={() => deleteItem(index)}>
+              delete
+            </buttom>
           </li>
         ))}
       </ul>
