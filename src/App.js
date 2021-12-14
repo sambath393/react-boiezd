@@ -3,7 +3,11 @@ import './style.css';
 
 export default function App() {
   const [dsp, setDsp] = useState('');
-  const [itemList, setItemList] = useState([]);
+  const [itemList, setItemList] = useState([
+    {
+      dsp: "test"
+    }
+  ]);
 
   const addItem = (e) => {
     if (e.key === 'Enter') {
@@ -39,11 +43,11 @@ export default function App() {
       />
       <ul>
         {itemList?.map((load, index) => (
-          <li key={index}>
+          <li key={index} className="item">
             <span>{load.dsp}</span> &emsp;
-            <buttom onClick={() => editItem(index, load)}>edit</buttom>
+            <buttom className="edit-btn" onClick={() => editItem(index, load)}>edit</buttom>
             &emsp;
-            <buttom onClick={() => deleteItem(index)}>delete</buttom>
+            <buttom className="delete-btn" onClick={() => deleteItem(index)}>delete</buttom>
           </li>
         ))}
       </ul>
