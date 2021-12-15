@@ -9,7 +9,9 @@ export default function App() {
     if (e.key === 'Enter') {
       if (item !== '') {
         let arr = [...itemList];
-        let index = arr.findIndex((ele) => ele.item === item);
+        let index = arr.findIndex(
+          (ele) => ele.item.toUpperCase() === item.toUpperCase()
+        );
 
         if (index === -1) {
           arr.push({
