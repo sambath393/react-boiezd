@@ -30,9 +30,7 @@ export default function App() {
 
   const editItem = (index, e) => {
     setItem(e.item);
-    let arr = [...itemList];
-    arr.splice(index, 1);
-    setItemList(arr);
+    deleteItem(index);
   };
 
   const deleteItem = (index) => {
