@@ -2,21 +2,21 @@ import React, { useState } from 'react';
 import './style.css';
 
 export default function App() {
-  const [dsp, setDsp] = useState('');
+  const [item, setItem] = useState('');
   const [itemList, setItemList] = useState([]);
 
   const addItem = (e) => {
     if (e.key === 'Enter') {
-      if (dsp !== '') {
+      if (item !== '') {
         let arr = [...itemList];
-        let index = arr.findIndex((ele) => ele.dsp === dsp);
+        let index = arr.findIndex((ele) => ele.item === item);
 
         if (index === -1) {
           arr.push({
-            dsp: dsp,
+            item: item,
           });
           setItemList(arr);
-          setDsp('');
+          setItem('');
         } else {
           alert('Duplicate item');
         }
@@ -27,7 +27,7 @@ export default function App() {
   };
 
   const editItem = (index, e) => {
-    setDsp(e.dsp);
+    setItem(e.item);
     let arr = [...itemList];
     arr.splice(index, 1);
     setItemList(arr);
@@ -42,15 +42,15 @@ export default function App() {
   return (
     <div>
       <input
-        value={dsp}
+        value={item}
         placeholder="item"
-        onChange={(e) => setDsp(e.target.value)}
+        onChange={(e) => setItem(e.target.value)}
         onKeyDown={(e) => addItem(e)}
       />
       <ul>
         {itemList?.map((load, index) => (
           <li key={index} className="item">
-            <span>{load.dsp}</span> &emsp;
+            <span>{load.item}</span> &emsp;
             <buttom className="edit-btn" onClick={() => editItem(index, load)}>
               edit
             </buttom>
