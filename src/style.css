@@ -21,6 +21,7 @@ p {
 
 .item {
   padding: 4px 4px;
+  cursor: pointer;
 }
 
 .item:hover .delete-btn,
