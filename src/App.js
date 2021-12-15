@@ -28,15 +28,15 @@ export default function App() {
     }
   };
 
-  const editItem = (index, e) => {
-    setItem(e.item);
-    deleteItem(index);
-  };
-
   const deleteItem = (index) => {
     let arr = [...itemList];
     arr.splice(index, 1);
     setItemList(arr);
+  };
+
+  const editItem = (index, e) => {
+    setItem(e.item);
+    deleteItem(index);
   };
 
   return (
